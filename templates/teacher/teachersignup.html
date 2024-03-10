@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        form {
+            margin: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 0, 0.7); /* Yellow-orange shade with opacity */
+            backdrop-filter: blur(5px); /* Apply slight blur effect to the background */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #adc5df;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #d7d2cc, #adc5df);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #d7d2cc, #adc5df); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: url('https://cdn.wallpapersafari.com/87/87/mxRVkq.jpg') center/cover no-repeat ;
+        }
+
+        form label {
+            opacity: 1; /* Make text full opacity */
+            color: black; /* Change text color to black */
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="tel"] {
+            background-color: rgba(255, 255, 0, 0.3); /* Yellow-orange shade with opacity */
+            border: none;
+        }
+
+        form button {
+            background-color: rgba(255, 165, 0, 0.8); /* Orange color with opacity */
+            border: none;
+            color: white;
+        }
+
+        form button:hover {
+            background-color: rgba(255, 165, 0, 1); /* Darker orange color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    {% include "exam/navbar.html" %}
+
+    <br><br><br>
+
+    <div class="container">
+        <h3 style="text-align: center;">Teacher Signup Form</h3>
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="first_name">First Name</label>
+                    {% render_field userForm.first_name|attr:'required:true'  class="form-control form-control-sm rounded-0"  placeholder="First Name" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name">Last Name</label>
+                    {% render_field userForm.last_name|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Last Name" %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="mobile">Contact</label>
+                    {% render_field teacherForm.mobile|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Contact Number" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address">Address</label>
+                    {% render_field teacherForm.address|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Address" %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    {% render_field userForm.username|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="username" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    {% render_field userForm.password|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="password" %}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="profile_pic">Profile Picture</label>
+                    {% render_field teacherForm.profile_pic|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="" %}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg rounded-0">Sign Up</button>
+        </form>
+    </div>
+
+    <br><br>
+
+    {% include "exam/footer.html" %}
+</body>
+
+</html>

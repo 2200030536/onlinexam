@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('https://sm.mashable.com/t/mashable_sea/photo/default/online-learning_593s.960.jpg') center/cover no-repeat ;
+    background-attachment: fixed; /* Fixed background */
+
+    color: #000; /* Text color changed to black */
+  }
+
+  .jumbotron {
+    margin-bottom: 0px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #section-jumbotron {
+    background: none;
+  }
+
+  .display-3,
+  .display-4,
+  .lead {
+    color: black; /* Pink color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Text shadow for a nice effect */
+  }
+
+  .btn-info {
+    background-color: #ff4081; /* Pink button background color */
+    border-color: #ff4081; /* Pink button border color */
+    color: #d81717; /* Button text color changed to black */
+    border-radius: 20px; /* Adjust border-radius for the desired shape */
+    background-color: #f71212;
+  }
+
+  .btn-info:hover {
+    background-color: pink; /* Darker pink on hover */
+    border-color: #d81b60;
+    background-color: #f71212;
+
+  }
+</style>
+
+<body>
+  {% include "exam/navbar.html" %}
+  <br>
+  <section id="section-jumbotron" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
+    <div class="container text-center">
+      <h2 class="display-3 text-info">Online Examination System</h2>
+      <p class="display-4 d-none d-sm-block">Attend your examinations online!</p>
+      <p class="lead"><strong><b>Sign Up now to start your first online examination</b></strong></p>
+
+      <p style="color: rgb(216, 23, 23);"><strong> Start Your Journey Here:</strong></p>
+
+      <a href="/student/studentsignup" class="btn btn-lg btn-info" style="padding-right: 35px; border-radius: 20px;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Sign Up as Student</a>
+
+      <br><br><br>
+    </div>
+  </section>
+  {% include "exam/footer.html" %}
+</body>
+
+</html>

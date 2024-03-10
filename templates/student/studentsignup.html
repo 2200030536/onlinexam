@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Styling for the form and body -->
+    <style>
+        form {
+            margin: 50px;
+            background-color: rgba(255, 255, 0, 0.7); /* Yellow-orange shade with opacity */
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Apply slight blur effect to the background */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #adc5df;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #d7d2cc, #adc5df);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #d7d2cc, #adc5df); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: url('https://i0.wp.com/tiu.edu.iq/wp-content/uploads/2019/06/registration.jpg?fit=1920%2C1080&ssl=1') center/cover no-repeat ;
+        }
+
+        form label {
+            opacity: 1; /* Make text full opacity */
+            color: black; /* Change text color to black */
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="tel"] {
+            background-color: rgba(255, 255, 0, 0.3); /* Yellow-orange shade with opacity */
+            border: none;
+        }
+
+        form button {
+            background-color: rgba(255, 165, 0, 0.8); /* Orange color with opacity */
+            border: none;
+            color: white;
+        }
+
+        form button:hover {
+            background-color: rgba(255, 165, 0, 1); /* Darker orange color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include the navigation bar from "exam/navbar.html" -->
+    {% include "exam/navbar.html" %}
+
+    <br><br><br>
+
+    <!-- Container for the form -->
+    <div class="container">
+        <h3 style="text-align: center;">Student Signup Form</h3>
+
+        <!-- Start of the form with CSRF token and file upload -->
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Form rows for user details -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="first_name">First Name</label>
+                    <!-- Render first_name field with Bootstrap styling -->
+                    {% render_field userForm.first_name|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="First Name" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="last_name">Last Name</label>
+                    <!-- Render last_name field with Bootstrap styling -->
+                    {% render_field userForm.last_name|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Last Name" %}
+                </div>
+            </div>
+
+            <!-- Form rows for contact and address -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="mobile">Contact</label>
+                    <!-- Render mobile field with Bootstrap styling -->
+                    {% render_field studentForm.mobile|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Contact Number" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address">Address</label>
+                    <!-- Render address field with Bootstrap styling -->
+                    {% render_field studentForm.address|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="Address" %}
+                </div>
+            </div>
+
+            <!-- Form rows for username and password -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <!-- Render username field with Bootstrap styling -->
+                    {% render_field userForm.username|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="username" %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <!-- Render password field with Bootstrap styling -->
+                    {% render_field userForm.password|attr:'required:true'  class="form-control form-control-sm rounded-0" placeholder="password" %}
+                </div>
+            </div>
+
+            <!-- Form row for profile picture -->
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="profile_pic">Profile Picture</label>
+                    <!-- Render profile_pic field with Bootstrap styling -->
+                    {% render_field studentForm.profile_pic|attr:'required:true' class="form-control form-control-sm rounded-0" placeholder="" %}
+                </div>
+            </div>
+
+            <!-- Submit button with Bootstrap styling -->
+            <button type="submit" class="btn btn-primary btn-lg rounded-0 ">Sign Up</button>
+        </form>
+    </div>
+
+    <br><br>
+
+    <!-- Include the footer from "exam/footer.html" -->
+    {% include "exam/footer.html" %}
+</body>
+
+</html>
